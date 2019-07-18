@@ -1,0 +1,8 @@
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: linear-gradient(rgba(85,85,85,0.6),rgba(85,85,85,0.6)), url('../static/images/ewallet.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
