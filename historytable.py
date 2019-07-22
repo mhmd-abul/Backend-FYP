@@ -15,17 +15,17 @@ class Transaction(Base):
     __tablename__ = "transaction"
 
     id = Column(Integer, primary_key=True)
-    tpnumber = Column(String, ForeignKey(Student.tpnumber), nullable=False) # (Student.tpnumber) --> Class.entity
-    date = Column(DateTime, default=datetime.datetime.utcnow)
+    tpnumber = Column(String, nullable=False) # (Student.tpnumber) --> Class.entity
+    date = Column(DateTime)
     transaction_type = Column(String)
     nominal = Column(Integer)
     
 
 #----------------------------------------------------------------------
-    def __init__(self, tpnumber, date, transaction_type, nominal):
+    def __init__(self, tpnumber, transaction_type, nominal):
         
         self.tpnumber = tpnumber
-        self.date = date
+        self.date = datetime.datetime.utcnow()
         self.transaction_type = transaction_type
         self.nominal = nominal
 
