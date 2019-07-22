@@ -10,6 +10,9 @@
 </div>
 <div class="login-form">
 <div class="control-group">
+	{% if message != null %}
+	<div style='padding-bottom: 15px; color: red;'>{{message}}</div>
+	{% endif %}
 				<input type="text" class="login-field" value="" placeholder="Admin Username" name="username">
 <label class="login-field-icon fui-user" for="login-name"></label></div>
 <div class="control-group">
