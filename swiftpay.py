@@ -44,15 +44,6 @@ def admin_login():
         return render_template('login.html', message='Invalid Username and Password, Please Try Again')
     return render_template('login.html')
 
-
-    '''if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        session['login'] = True
-    else:
-        flash('Invalid Username and Password')
-    return home()'''
-
-
-
 @app.route("/logout")
 def logout():
     session['login'] = False
@@ -138,9 +129,9 @@ def student_payment():
     tpnumber = request.json.get('tpnumber')
     transaction_type = request.json.get('transaction_type')
     nominal = request.json.get('nominal')
-    print(tpnumber)
-    print(transaction_type)
-    print(nominal)
+    print(tpnumber) #for debugging and checking the value only, removing this line is wont affecting the program
+    print(transaction_type) #for debugging and checking the value only, removing this line is wont affecting the program
+    print(nominal) #for debugging and checking the value only, removing this line is wont affecting the program
     Session = sessionmaker(bind=engine)
     session_database = Session() #important note
     if tpnumber is None or transaction_type is None or nominal is None:
@@ -153,7 +144,10 @@ def student_payment():
     student.balance -= nominal
     session_database.commit()
 
-    return jsonify({'message':'Payment Succesfully'}), 201
+    return jsonify({
+        'tpnumber': student.tpnumber,
+        'balance': student.balance
+        }), 201
 
 @app.route('/student_transaction/<tpnumber>', methods = ['GET'])
 def student_transaction(tpnumber):
